@@ -11,6 +11,7 @@ function mostrar()
 	{ 
 		alert("Niña bonita");
 	}		
-	else(alert("Edad no adecuada"));
+	
+
 
 }//FIN DE LA FUNCIÓN
