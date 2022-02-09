@@ -12,7 +12,7 @@ function mostrar()
 	{
 		alert("Usted es un adolescente");
 	}
-
+	
 	
 
 }//FIN DE LA FUNCIÓN
