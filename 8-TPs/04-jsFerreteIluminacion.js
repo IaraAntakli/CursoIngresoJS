@@ -38,13 +38,79 @@ function CalcularPrecio ()
     precioSinDescuento = cantidadLamparas * precio;
 
     porcentaje = 0;
+    
+    switch(cantidadLamparas)
+    {
+        case 1:
+        case 2:
+            porcentaje = 0;
+            break;
+        case 3:
+            switch(marca)
+            {
+                case "ArgentinaLuz":
+                    porcentaje = 15;
+                    break;
+                case "FelipeLamparas":
+                    porcentaje = 10;
+                    break;
+                default:
+                    porcentaje = 5;
+                    break;        
+            }
+        break;    
+        case 4:
+            switch(marca)
+            {
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                    porcentaje = 25;
+                    break;
+                default:
+                    porcentaje = 20;
+                    break;    
+            }
+        break;    
+        case 5:
+            switch(marca)
+            {
+                case "ArgentinaLuz":
+                    porcentaje = 40;
+                    break;
+                default:
+                    porcentaje = 30;
+                    break;
 
+            }
+        break;    
+        default:
+            porcentaje = 50;
+            break;                   
+    }
     
 
-    if(cantidadLamparas >= 6) //A
+    descuento = precioSinDescuento*porcentaje/100;
+
+    importeFinal = precioSinDescuento - descuento;
+
+    aumentoIIBB = importeFinal * 0.10;
+
+    if(importeFinal >= 120)
+    {
+        importeFinal = importeFinal + aumentoIIBB;
+        alert("Usted pagó $" + importeFinal + " siendo $" + aumentoIIBB + " el impuesto que se pagó")
+    }
+
+
+    document.getElementById("txtIdprecioDescuento").value = importeFinal;
+        
+}
+
+
+/* Solo If
+if(cantidadLamparas >= 6) //A
     {
        porcentaje = 50;
-       alert(importeFinal);
     }    
     else
     {
@@ -53,12 +119,10 @@ function CalcularPrecio ()
             if(marca == "ArgentinaLuz")
             {
                 porcentaje = 40;
-                alert(importeFinal);
             }
             else
             {
                 porcentaje = 30;
-                alert(importeFinal);
             }
         }
         else
@@ -68,12 +132,10 @@ function CalcularPrecio ()
                 if(marca == "ArgentinaLuz" || marca == "FelipeLamparas")
                 {
                     porcentaje = 25;
-                    alert(importeFinal);
                 }
                 else
                 {
                     porcentaje = 20;
-                    alert(importeFinal);
                 }
             }
             else
@@ -83,34 +145,74 @@ function CalcularPrecio ()
                     if(marca == "ArgentinaLuz")
                     {
                         porcentaje = 15;
-                        alert(importeFinal);
                     }
                     else
                     {
                         if(marca == "FelipeLamparas")
                         {
                             porcentaje = 10;
-                            alert(importeFinal);
                         }
                         else
                         {
                             porcentaje = 5;
-                            alert(importeFinal);
                         }
                     }
                 }
                 
             }
         }
-    }
+    }*/
 
-    descuento = precioSinDescuento*porcentaje/100;
-
-    importeFinal = precioSinDescuento - descuento;
-
-    document.getElementById("txtIdprecioDescuento").value = importeFinal;
-
-    aumentoIIBB = importeFinal * porcentaje /100;
-    
-}
-
+/* If y switch
+    if(cantidadLamparas >= 6) //A
+    {
+       porcentaje = 50;
+    }    
+    else
+    {
+        if(cantidadLamparas == 5)
+        {
+           switch(marca)
+           {
+            case "ArgentinaLuz":
+                porcentaje = 40;
+                break;
+            default:
+                porcentaje = 30;
+                break;
+           } 
+        }
+        
+        if(cantidadLamparas == 4)//B
+        {
+            switch(marca)
+            {
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                    porcentaje = 25;
+                    break;
+                default:
+                    porcentaje = 20;
+                    break;    
+            }
+        }
+        else
+        {
+            if(cantidadLamparas == 3)//C
+                {
+                    switch(marca)
+                    {
+                        case "ArgentinaLuz":
+                            porcentaje = 15;
+                            break;
+                        case "FelipeLamparas":
+                            porcentaje = 10;
+                            break;
+                        default:
+                            porcentaje = 5;
+                            break;       
+                    }
+                }
+        }
+                
+    }*/
