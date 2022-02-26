@@ -12,18 +12,61 @@ hasta que el usuario quiera, mostrar:
 9-Diferencia entre positivos y negativos, (positvos-negativos). */
 function mostrar()
 {
-	//declarar contadores y variables 
-	var respuesta;
+	//declarar variables 
 	var numeroIngresado;
-	var sumaNegativos=0;
-
-	respuesta="si";
-
-	while(respuesta=="si")
+	var respuesta = "si";
+	var contadorPositivos = 0;
+	var contadorNegativos = 0;
+	var contadorCeros = 0;
+	var contadorPares = 0;
+	var acumuladorPositivos = 0;
+	var acumuladorNegativos = 0;
+	var promedioPositivos;
+	var promedioNegativos;
+	var diferencia; //positivo-negativp
+	
+	//bucle resp=si
+	while(respuesta == "si")
 	{
-		
-		respuesta=prompt("desea continuar?");
-	}//fin del while
+		//pedir numero
+		numeroIngresado=parseInt(prompt("Ingrese un numero: "))
+		if(numeroIngresado < 0)//analizar signo
+		{
+			contadorNegativos++;
+			acumuladorNegativos = acumuladorNegativos + numeroIngresado;
+		}
+		else
+		{
+			if(numeroIngresado == 0)
+			{
+				contadorCeros++;
+			}
+			else
+			{
+				contadorPositivos++;
+				acumuladorPositivos += numeroIngresado;
+			}
+		}
+		if(numeroIngresado % 2 == 0) //condicion paridad
+		{
+			contadorPares++;
+		}
 
-	document.write("la suma de negativos es :"+sumaNegativos);
-}//FIN DE LA FUNCIÓN
+		respuesta = prompt("¿Desea seguir ingresando numeros?");
+	}
+	//calculos promedios
+
+	promedioNegativos = acumuladorNegativos / contadorNegativos;
+
+	promedioPositivos = acumuladorPositivos / contadorPositivos;
+
+	//mostrar resultado
+	document.write("Suma negativos: "+ acumuladorNegativos + "<br>");
+	document.write("Suma positivos: "+ acumuladorPositivos + "<br>");
+	document.write("Cantidad negativos: "+ contadorNegativos + "<br>");
+	document.write("Cantidad positivos: "+ contadorPositivos + "<br>");
+	document.write("Cantidad de ceros: "+ contadorCeros + "<br>");
+	document.write("Cantidad de pares: "+ contadorPares + "<br>");
+	document.write("Promedio negativos: "+ promedioNegativos + "<br>");
+	document.write("Promedio positivos: "+ promedioPositivos + "<br>");
+}
